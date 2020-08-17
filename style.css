@@ -38,10 +38,19 @@ body{
     background: rgba(255, 255, 255, 0.2);
     border-radius: 15px;
 }
+.album-highlight{
+    color: goldenrod;
+    font-weight: 700;
+}
 #songArea{
     display: none;
 }
 #lyrics-area{
     display: none;
 }
-
+#heading{
+    display: none;
+}
+#fancy-area{
+    display: none;
+}

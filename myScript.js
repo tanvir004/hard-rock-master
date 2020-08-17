@@ -1,22 +1,18 @@
 let inputValue = document.querySelector('.inputValue');
 let button = document.querySelector('.button');
-//let titleOne = document.querySelector('.title-one');
-let diletea = document.querySelector('name');
+let heading = document.getElementById('heading');
 
 button.addEventListener('click', function(){
     fetch('https://api.lyrics.ovh/suggest/'+inputValue.value)
 .then(response => response.json())
-.then(data =>{
-    
-    console.log(data);
+.then(data =>{    
+    //console.log(data);
     let detailsArea = document.getElementById('songArea')
     detailsArea.style.display = "block";
     let songTitle = data.data.map(inputValue => inputValue.title);
     let songAlbum = data.data.map(songTitle => songTitle.album.title);
     let artistName = data.data.map(songAlbum => songAlbum.artist.name);
-    console.log(artistName);
-    // let artName = artistName[0];
-    // console.log(artName);
+    //console.log(artistName);
 
     let titleOne = songTitle[0];
     let artistNameOne = artistName[0];
@@ -74,46 +70,54 @@ let songLyrics = document.getElementById('lyrics-area')
 let lyricBtn = document.getElementById('lyrics-btn');
 lyricBtn.addEventListener('click',function(){
     songLyrics.style.display = "block"
+    heading.style.display="block"
     fetch('https://api.lyrics.ovh/v1/'+artistNameOne+'/'+titleOne)
     .then(response => response.json())
     .then(data =>{
-        let fullLyrics = data.lyrics    
-        console.log(data)
+        let fullLyrics = data.lyrics  
+        if(data.error){
+            alert("No lyrics Found!!Select another")
+
+        }  
+        else{
         document.getElementById('lyrics-area').innerHTML=fullLyrics
+        }
+        
             
     })
-    .catch(err => alert("no lyrics found"))
 })
 
 
 let lyricBtnTwo = document.getElementById('lyrics-btn-two');
 lyricBtnTwo.addEventListener('click',function(){
     songLyrics.style.display = "block"
+    heading.style.display="block"
     fetch('https://api.lyrics.ovh/v1/'+artistNameTwo+'/'+titleTwo)
     .then(response => response.json())
     .then(data =>{
         let fullLyricsTwo = data.lyrics
-        console.log(data);
+        if(data.error){
+            alert("No lyrics Found!!Select another")
+        }
+        else{
         document.getElementById('lyrics-area').innerHTML=fullLyricsTwo
-            
- 
+        }
     })
-    .catch(err => alert("no lyrics found")) 
 })
 
 
 let lyricBtnThree = document.getElementById('lyrics-btn-three');
 lyricBtnThree.addEventListener('click',function(){
     songLyrics.style.display = "block"
+    heading.style.display="block"
     fetch('https://api.lyrics.ovh/v1/'+artistNameThree+'/'+titleThree)
     .then(response => response.json())
     .then(data =>{
         let fullLyricsThree = data.lyrics
-        if(fullLyricsThree.error){
-            alert("error")
+        if(data.error){
+            alert("No lyrics Found!!Select another")
         }
         else{
-        console.log(data);
         document.getElementById('lyrics-area').innerHTML=fullLyricsThree 
         }  
                 
@@ -126,98 +130,133 @@ lyricBtnThree.addEventListener('click',function(){
 let lyricBtnFour = document.getElementById('lyrics-btn-four');
 lyricBtnFour.addEventListener('click',function(){
     songLyrics.style.display = "block"
+    heading.style.display="block"
     fetch('https://api.lyrics.ovh/v1/'+artistNameFour+'/'+titleFour)
     .then(response => response.json())
     .then(data =>{
         let fullLyricsFour = data.lyrics
-        console.log(data);
-        document.getElementById('lyrics-area').innerHTML=fullLyricsFour        
+        if(data.error){
+            alert("No lyrics Found!!Select another")
+        }
+        else{
+            document.getElementById('lyrics-area').innerHTML=fullLyricsFour 
+        }
+               
     
     })
-    .catch(err => alert("no lyrics found")) 
 })
 
 let lyricBtnFive = document.getElementById('lyrics-btn-five');
 lyricBtnFive.addEventListener('click',function(){
     songLyrics.style.display = "block"
+    heading.style.display="block"
     fetch('https://api.lyrics.ovh/v1/'+artistNameFive+'/'+titleFive)
     .then(response => response.json())
     .then(data =>{
         let fullLyricsFive = data.lyrics
-        console.log(data);
-        document.getElementById('lyrics-area').innerHTML=fullLyricsFive       
+        if(data.error){
+            alert("No lyrics Found!!Select another")
+        }
+        else{
+            document.getElementById('lyrics-area').innerHTML=fullLyricsFive  
+        }
+             
     
     })
-    .catch(err => alert("no lyrics found")) 
 })
 
 let lyricBtnSix = document.getElementById('lyrics-btn-six');
 lyricBtnSix.addEventListener('click',function(){
     songLyrics.style.display = "block"
+    heading.style.display="block"
     fetch('https://api.lyrics.ovh/v1/'+artistNameSix+'/'+titleSix)
     .then(response => response.json())
     .then(data =>{
         let fullLyricsSix = data.lyrics
-        console.log(data);
-        document.getElementById('lyrics-area').innerHTML=fullLyricsSix     
+        if(data.error){
+            alert("No lyrics Found!!Select another")
+        }
+        else{
+            document.getElementById('lyrics-area').innerHTML=fullLyricsSix   
+        }
+          
     
     })
-    .catch(err => alert("no lyrics found")) 
 })
 
 let lyricBtnSeven = document.getElementById('lyrics-btn-seven');
 lyricBtnSeven.addEventListener('click',function(){
     songLyrics.style.display = "block"
+    heading.style.display = "block"
     fetch('https://api.lyrics.ovh/v1/'+artistNameSeven+'/'+titleSeven)
     .then(response => response.json())
     .then(data =>{
         let fullLyricsSeven = data.lyrics
-        console.log(data);
-        document.getElementById('lyrics-area').innerHTML=fullLyricsSeven   
+        if(data.error){
+            alert("No lyrics Found!!Select another")
+        }
+        else{
+            document.getElementById('lyrics-area').innerHTML=fullLyricsSeven  
+        }
+         
     
     })
-    .catch(err => alert("no lyrics found")) 
 })
 
 let lyricBtnEight = document.getElementById('lyrics-btn-eight');
 lyricBtnEight.addEventListener('click',function(){
     songLyrics.style.display = "block"
+    heading.style.display = "block"
     fetch('https://api.lyrics.ovh/v1/'+artistNameEight+'/'+titleEight)
     .then(response => response.json())
     .then(data =>{
         let fullLyricsEight = data.lyrics
-        console.log(data);
-        document.getElementById('lyrics-area').innerHTML=fullLyricsEight  
+        if(data.error){
+            alert("No lyrics Found!!Select another")
+        }
+        else{
+            document.getElementById('lyrics-area').innerHTML=fullLyricsEight  
+        }
+        
     
     })
-    .catch(err => alert("no lyrics found")) 
 })
 
 let lyricBtnNine = document.getElementById('lyrics-btn-nine');
 lyricBtnNine.addEventListener('click',function(){
     songLyrics.style.display = "block"
+    heading.style.display = "block"
     fetch('https://api.lyrics.ovh/v1/'+artistNameNine+'/'+titleNine)
     .then(response => response.json())
     .then(data =>{
         let fullLyricsNine = data.lyrics
-        console.log(data);
-        document.getElementById('lyrics-area').innerHTML=fullLyricsNine
+        if(data.error){
+            alert("No lyrics Found!!Select another")
+        }
+        else{
+            document.getElementById('lyrics-area').innerHTML=fullLyricsNine
+        }
+        
     
-    })
-    .catch(err => alert("no lyrics found")) 
+    }) 
 })
 
 let lyricBtnTen = document.getElementById('lyrics-btn-ten');
 lyricBtnTen.addEventListener('click',function(){
+    songLyrics.style.display = "block"
+    heading.style.display="block"
     fetch('https://api.lyrics.ovh/v1/'+artistNameTen+'/'+titleTen)
     .then(response => response.json())
     .then(data =>{
         let fullLyricsTen = data.lyrics
-        console.log(data);
+        if(data.error){
+            alert("No lyrics Found!!Select another")
+        }
+        else{
         document.getElementById('lyrics-area').innerHTML=fullLyricsTen
+        }
     
     })
-    .catch(err => alert("no lyrics found")) 
 })
 
     
